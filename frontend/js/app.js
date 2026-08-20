@@ -16,6 +16,9 @@ const prediction =
 const probability =
     document.getElementById("probability");
 
+    const interpretation =
+    document.getElementById("interpretation");
+
 const probabilityFill =
     document.getElementById("probability-fill");
 
@@ -53,6 +56,9 @@ async function analyzeMessage() {
 
 
     hideError();
+    
+    resultCard.classList.add("hidden");
+
 
 
     if (!message) {
@@ -118,7 +124,7 @@ async function analyzeMessage() {
         analyzeButton.disabled = false;
 
         analyzeButton.textContent =
-            "Analyze Message";
+    "Analyzing message...";
     }
 }
 
@@ -130,20 +136,32 @@ function displayResult(data) {
     );
 
 
-    prediction.textContent =
-        data.prediction;
-
-
     const percentage =
         data.spam_probability * 100;
 
 
+    prediction.textContent =
+        data.prediction;
+
+
     probability.textContent =
-        `Spam probability: ${percentage.toFixed(2)}%`;
+        `${percentage.toFixed(2)}%`;
 
 
     probabilityFill.style.width =
         `${percentage}%`;
+
+
+    if (data.prediction === "SPAM") {
+
+        interpretation.textContent =
+            "This message shows characteristics commonly associated with spam.";
+
+    } else {
+
+        interpretation.textContent =
+            "This message appears consistent with legitimate messages.";
+    }
 }
 
 
