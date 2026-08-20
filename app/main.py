@@ -44,13 +44,20 @@ def predict(request: MessageRequest):
         result = classify_message(request.message)
 
         return {
-            "message": request.message,
-            "prediction": result["label"],
-            "spam_probability": result["spam_probability"]
-        }
+    "prediction": result["label"],
+    "spam_probability": result["spam_probability"]
+}
 
-    except (ValueError, TypeError) as error:
+    except ValueError as error:
+
         raise HTTPException(
             status_code=400,
             detail=str(error)
+        )
+
+    except Exception:
+
+        raise HTTPException(
+            status_code=500,
+            detail="An internal prediction error occurred."
         )
