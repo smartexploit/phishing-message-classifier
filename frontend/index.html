@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Phishing Message Classifier</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+    <main class="container">
+
+        <section class="hero">
+            <p class="eyebrow">MACHINE LEARNING SECURITY TOOL</p>
+
+            <h1>
+                Phishing Message
+                <span>Classifier</span>
+            </h1>
+
+            <p class="description">
+                Analyze a message using a machine-learning model
+                trained to distinguish spam from legitimate messages.
+            </p>
+        </section>
+
+
+        <section class="classifier-card">
+
+            <label for="message">
+                Enter a message
+            </label>
+
+            <textarea
+                id="message"
+                maxlength="2000"
+                placeholder="Paste or type a message you want to analyze..."
+            ></textarea>
+
+            <div class="input-footer">
+                <span id="character-count">
+                    0 / 2000
+                </span>
+
+                <button id="analyze-button">
+                    Analyze Message
+                </button>
+            </div>
+
+            <p
+                id="error-message"
+                class="error hidden"
+            ></p>
+
+        </section>
+
+
+        <section
+            id="result-card"
+            class="result-card hidden"
+        >
+
+            <p class="result-label">
+                Classification Result
+            </p>
+
+            <h2 id="prediction">
+                —
+            </h2>
+
+            <p id="probability">
+                —
+            </p>
+
+            <div class="probability-bar">
+                <div
+                    id="probability-fill"
+                    class="probability-fill"
+                ></div>
+            </div>
+
+        </section>
+
+
+        <footer>
+            <p>
+                Built as a machine learning portfolio project.
+            </p>
+        </footer>
+
+    </main>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>

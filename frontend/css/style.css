@@ -1,0 +1,253 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: #f4f7fb;
+    color: #172033;
+
+    padding: 40px 20px;
+}
+
+
+.container {
+    width: min(760px, 100%);
+    margin: 0 auto;
+}
+
+
+.hero {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+
+.eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+}
+
+
+.hero h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 1.05;
+    margin-bottom: 18px;
+}
+
+
+.hero h1 span {
+    display: block;
+}
+
+
+.description {
+    max-width: 620px;
+    margin: 0 auto;
+
+    line-height: 1.7;
+    color: #5d687a;
+}
+
+
+.classifier-card,
+.result-card {
+    background: white;
+
+    border: 1px solid #e1e6ef;
+    border-radius: 18px;
+
+    padding: 24px;
+
+    box-shadow:
+        0 12px 35px rgba(20, 30, 50, 0.08);
+}
+
+
+.classifier-card label {
+    display: block;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+
+textarea {
+    width: 100%;
+    min-height: 190px;
+
+    resize: vertical;
+
+    border: 1px solid #d5dce7;
+    border-radius: 12px;
+
+    padding: 16px;
+
+    font: inherit;
+
+    outline: none;
+}
+
+
+textarea:focus {
+    border-color: #5865f2;
+
+    box-shadow:
+        0 0 0 3px rgba(88, 101, 242, 0.12);
+}
+
+
+.input-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-top: 14px;
+}
+
+
+#character-count {
+    color: #7a8495;
+    font-size: 0.85rem;
+}
+
+
+button {
+    border: none;
+    border-radius: 10px;
+
+    padding: 12px 20px;
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    background: #172033;
+    color: white;
+}
+
+
+button:hover {
+    opacity: 0.9;
+}
+
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+
+.result-card {
+    margin-top: 22px;
+
+    text-align: center;
+}
+
+
+.result-label {
+    font-size: 0.85rem;
+    color: #6c7687;
+
+    margin-bottom: 8px;
+}
+
+
+#prediction {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+
+#probability {
+    color: #5d687a;
+}
+
+
+.probability-bar {
+    width: 100%;
+    height: 10px;
+
+    margin-top: 18px;
+
+    background: #e9edf3;
+
+    border-radius: 999px;
+
+    overflow: hidden;
+}
+
+
+.probability-fill {
+    height: 100%;
+    width: 0%;
+
+    transition: width 0.4s ease;
+}
+
+
+.error {
+    margin-top: 12px;
+
+    font-size: 0.9rem;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+footer {
+    text-align: center;
+
+    margin-top: 28px;
+
+    color: #7a8495;
+
+    font-size: 0.85rem;
+}
+
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 24px 14px;
+    }
+
+
+    .classifier-card,
+    .result-card {
+        padding: 18px;
+    }
+
+
+    .input-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+    button {
+        width: 100%;
+    }
+
+}
