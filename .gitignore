@@ -1,6 +1,27 @@
+# Virtual environment
 .venv/
+
+# Python cache
 __pycache__/
-*.pyc
-.env
+*.py[cod]
+
+# Jupyter
 .ipynb_checkpoints/
+
+# Environment variables
+.env
+.env.*
+
+# IDE
+.vscode/
+
+# Logs
 *.log
+
+# Raw dataset
+data/raw/*
+!data/raw/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
