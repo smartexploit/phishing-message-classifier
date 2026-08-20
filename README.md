@@ -67,6 +67,26 @@ The project was designed to:
 
              Dataset
 
+## Demo
+
+The application provides a browser-based interface for submitting messages and receiving machine-learning classifications.
+
+### Spam Classification
+
+![Spam Classification](screenshots/spam-result.png)
+
+### Legitimate Classification
+
+![Legitimate Classification](screenshots/legitimate-result.png)
+
+### FastAPI Documentation
+
+![FastAPI Documentation](screenshots/api-docs.png)
+
+### Automated Tests
+
+![Automated Tests](screenshots/tests.png)
+
 The project uses the SMS Spam Collection dataset.
 
 The dataset contains labeled SMS messages classified as spam or legitimate (ham).
@@ -319,9 +339,3 @@ Disclaimer
 This project is intended for educational and portfolio purposes.
 
 The model's output is a machine-learning prediction and should not be considered a definitive security verdict.
-
-
-Save:
-
-```text
-Ctrl + S
