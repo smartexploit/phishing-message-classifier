@@ -1,126 +1,690 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Phishing Message Classifier</title>
-
-    <link
-        rel="stylesheet"
-        href="css/style.css"
+    <meta
+        name="description"
+        content="AI-powered phishing and spam message classifier for cybersecurity threat analysis."
     >
+
+    <meta
+        name="author"
+        content="Ogunlade Faith Kayode"
+    >
+
+    <title>Phishing Classifier | AI Security</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
+    <!-- Background decoration -->
+    <div class="background-grid"></div>
+
     <main class="container">
 
+        <!-- =====================================================
+             NAVIGATION
+             ===================================================== -->
+
+        <header class="topbar">
+
+            <a href="#" class="brand">
+
+                <div class="brand-icon">
+                    🛡
+                </div>
+
+                <div class="brand-text">
+
+                    <span class="brand-name">
+                        Phishing Classifier
+                    </span>
+
+                    <span class="brand-subtitle">
+                        AI SECURITY SYSTEM
+                    </span>
+
+                </div>
+
+            </a>
+
+            <div class="system-status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    System Online
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             HERO
+             ===================================================== -->
+
         <section class="hero">
-            <p class="eyebrow">MACHINE LEARNING SECURITY TOOL</p>
+
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                MACHINE LEARNING • CYBERSECURITY
+            </div>
 
             <h1>
-                Phishing Message
-                <span>Classifier</span>
+                Detect suspicious
+                <span>messages with AI.</span>
             </h1>
 
-            <p class="description">
-                Analyze a message using a machine-learning model
-                trained to distinguish spam from legitimate messages.
+            <p class="hero-description">
+                Analyze suspicious messages using a trained machine
+                learning model and receive an instant classification
+                with probability-based insights.
             </p>
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+                    <strong>AI</strong>
+                    <span>Powered</span>
+                </div>
+
+                <div class="hero-divider"></div>
+
+                <div class="hero-stat">
+                    <strong>ML</strong>
+                    <span>Classification</span>
+                </div>
+
+                <div class="hero-divider"></div>
+
+                <div class="hero-stat">
+                    <strong>API</strong>
+                    <span>Integrated</span>
+                </div>
+
+            </div>
+
         </section>
 
 
-        <section class="classifier-card">
+        <!-- =====================================================
+             ANALYZER
+             ===================================================== -->
 
-            <label for="message">
-                Enter a message
-            </label>
+        <section class="analyzer-card">
 
-            <textarea
-                id="message"
-                maxlength="2000"
-                placeholder="Paste or type a message you want to analyze..."
-            ></textarea>
+            <div class="card-top">
 
-            <div class="input-footer">
+                <div>
+
+                    <div class="section-label">
+                        MESSAGE ANALYSIS
+                    </div>
+
+                    <h2>
+                        Analyze a Message
+                    </h2>
+
+                    <p>
+                        Enter a message below and let the machine
+                        learning system classify its content.
+                    </p>
+
+                </div>
+
+                <div class="model-status">
+
+                    <span class="model-status-dot"></span>
+
+                    Model Ready
+
+                </div>
+
+            </div>
+
+
+            <!-- Message label -->
+
+            <div class="input-header">
+
+                <label for="message">
+                    Message
+                </label>
+
                 <span id="character-count">
                     0 / 2000
                 </span>
 
-                <button id="analyze-button">
-                    Analyze Message
-                </button>
             </div>
 
-            <p
+
+            <!-- Message input -->
+
+            <div class="textarea-wrapper">
+
+                <textarea
+                    id="message"
+                    maxlength="2000"
+                    placeholder="Paste or type the message you want to analyze..."
+                    aria-label="Message to analyze"
+                ></textarea>
+
+                <div class="textarea-corner">
+                    AI ANALYSIS
+                </div>
+
+            </div>
+
+
+            <!-- Example messages -->
+
+            <div class="examples">
+
+                <span class="examples-label">
+                    Try an example:
+                </span>
+
+                <button
+                    type="button"
+                    class="example-button"
+                    data-example="Congratulations! You have won a free prize. Click this link now to claim your reward."
+                >
+                    Suspicious message
+                </button>
+
+                <button
+                    type="button"
+                    class="example-button"
+                    data-example="Hi, just wanted to remind you that our meeting is scheduled for tomorrow at 10am. See you then."
+                >
+                    Normal message
+                </button>
+
+            </div>
+
+
+            <!-- Analyzer footer -->
+
+            <div class="analyzer-footer">
+
+                <div class="input-security-note">
+
+                    <span class="lock-icon">
+                        🔒
+                    </span>
+
+                    Message processed securely
+
+                </div>
+
+                <button
+                    id="analyze-button"
+                    class="analyze-button"
+                    type="button"
+                >
+
+                    <span
+                        id="button-content"
+                        class="button-content"
+                    >
+                        Analyze Message
+                        <span class="button-arrow">→</span>
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- Error -->
+
+            <div
                 id="error-message"
-                class="error hidden"
-            ></p>
+                class="error-message hidden"
+                role="alert"
+            ></div>
 
         </section>
-        
+
+
+        <!-- =====================================================
+             ANALYSIS RESULT
+             ===================================================== -->
+
         <section
-    id="result-card"
-    class="result-card hidden"
->
+            id="result-card"
+            class="result-card hidden"
+            aria-live="polite"
+        >
 
-    <p class="result-label">
-        Classification Result
-    </p>
+            <div class="result-header">
 
-    <h2 id="prediction">
-        —
-    </h2>
+                <div class="section-label">
+                    ANALYSIS COMPLETE
+                </div>
 
-    <p class="probability-title">
-        Spam probability
-    </p>
+                <span
+                    id="result-status"
+                    class="result-status"
+                >
+                    CLASSIFIED
+                </span>
 
-    <p
-        id="probability"
-        class="probability-value"
-    >
-        —
-    </p>
+            </div>
 
-    <div class="probability-bar">
-        <div
-            id="probability-fill"
-            class="probability-fill"
-        ></div>
-    </div>
 
-    <p
-        id="interpretation"
-        class="interpretation"
-    >
-        —
-    </p>
+            <div class="result-main">
 
-</section>
+                <!-- Result icon -->
 
+                <div
+                    id="result-icon"
+                    class="result-icon legitimate"
+                    aria-hidden="true"
+                >
+                    ✓
+                </div>
+
+
+                <div class="result-content">
+
+                    <p class="result-caption">
+                        Classification
+                    </p>
+
+                    <h2 id="prediction">
+                        LEGITIMATE
+                    </h2>
+
+                    <p
+                        id="interpretation"
+                        class="interpretation"
+                    >
+                        The message does not show strong indicators
+                        associated with spam.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Result metrics -->
+
+            <div class="result-metrics">
+
+                <div class="metric">
+
+                    <span class="metric-label">
+                        Spam Probability
+                    </span>
+
+                    <strong
+                        id="probability"
+                        class="metric-value"
+                    >
+                        0.00%
+                    </strong>
+
+                </div>
+
+                <div class="metric">
+
+                    <span class="metric-label">
+                        Threat Level
+                    </span>
+
+                    <strong
+                        id="threat-level"
+                        class="metric-value"
+                    >
+                        LOW
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Probability -->
+
+            <div class="probability-section">
+
+                <div class="probability-header">
+
+                    <span>
+                        Threat Probability
+                    </span>
+
+                    <span id="probability-label">
+                        0%
+                    </span>
+
+                </div>
+
+                <div
+                    class="probability-bar"
+                    aria-label="Spam probability"
+                >
+
+                    <div
+                        id="probability-fill"
+                        class="probability-fill"
+                    ></div>
+
+                </div>
+
+                <div class="probability-scale">
+
+                    <span>
+                        Low
+                    </span>
+
+                    <span>
+                        Moderate
+                    </span>
+
+                    <span>
+                        High
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             HOW IT WORKS
+             ===================================================== -->
+
+        <section class="pipeline-section">
+
+            <div class="section-heading">
+
+                <div class="section-label">
+                    MACHINE LEARNING PIPELINE
+                </div>
+
+                <h2>
+                    How the system works
+                </h2>
+
+                <p>
+                    The message moves through a series of processing
+                    stages before the model produces a classification.
+                </p>
+
+            </div>
+
+
+            <div class="pipeline">
+
+                <div class="pipeline-step">
+
+                    <div class="pipeline-number">
+                        01
+                    </div>
+
+                    <div class="pipeline-icon">
+                        💬
+                    </div>
+
+                    <h3>
+                        Message
+                    </h3>
+
+                    <p>
+                        User enters the message for analysis.
+                    </p>
+
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step">
+
+                    <div class="pipeline-number">
+                        02
+                    </div>
+
+                    <div class="pipeline-icon">
+                        ⚙
+                    </div>
+
+                    <h3>
+                        Processing
+                    </h3>
+
+                    <p>
+                        The message is prepared for model analysis.
+                    </p>
+
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step">
+
+                    <div class="pipeline-number">
+                        03
+                    </div>
+
+                    <div class="pipeline-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        ML Model
+                    </h3>
+
+                    <p>
+                        The trained model analyzes message patterns.
+                    </p>
+
+                </div>
+
+
+                <div class="pipeline-line"></div>
+
+
+                <div class="pipeline-step">
+
+                    <div class="pipeline-number">
+                        04
+                    </div>
+
+                    <div class="pipeline-icon">
+                        🛡
+                    </div>
+
+                    <h3>
+                        Result
+                    </h3>
+
+                    <p>
+                        The system returns the classification.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             TECHNOLOGY
+             ===================================================== -->
+
+        <section class="technology-section">
+
+            <div class="section-heading compact">
+
+                <div class="section-label">
+                    TECHNOLOGY
+                </div>
+
+                <h2>
+                    Built with modern tools
+                </h2>
+
+            </div>
+
+
+            <div class="technology-grid">
+
+                <div class="technology-card">
+
+                    <div class="technology-icon python">
+                        PY
+                    </div>
+
+                    <div>
+                        <strong>
+                            Python
+                        </strong>
+
+                        <span>
+                            Machine Learning
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="technology-card">
+
+                    <div class="technology-icon sklearn">
+                        ML
+                    </div>
+
+                    <div>
+                        <strong>
+                            Scikit-learn
+                        </strong>
+
+                        <span>
+                            ML Framework
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="technology-card">
+
+                    <div class="technology-icon fastapi">
+                        API
+                    </div>
+
+                    <div>
+                        <strong>
+                            FastAPI
+                        </strong>
+
+                        <span>
+                            Backend API
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="technology-card">
+
+                    <div class="technology-icon js">
+                        JS
+                    </div>
+
+                    <div>
+                        <strong>
+                            JavaScript
+                        </strong>
+
+                        <span>
+                            Frontend Logic
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SECURITY NOTE
+             ===================================================== -->
+
+        <section class="security-note">
+
+            <div class="security-note-icon">
+                🛡
+            </div>
+
+            <div>
+
+                <strong>
+                    AI-Assisted Security Analysis
+                </strong>
+
+                <p>
+                    This system provides machine learning-based
+                    classification and should be treated as an
+                    analytical aid rather than a replacement for
+                    human security judgment.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FOOTER
+             ===================================================== -->
 
         <footer>
 
-    <p>
-        Built as a machine learning portfolio project.
-    </p>
+            <div class="footer-brand">
+                Phishing Message Classifier
+            </div>
 
-    <p>
-        This classifier provides an ML-based prediction
-        and should not be treated as a definitive security verdict.
-    </p>
+            <p>
+                AI Security & Machine Learning Portfolio Project
+            </p>
 
-</footer>
+            <p class="footer-credit">
+                Built by <strong>Ogunlade Faith Kayode</strong>
+            </p>
+
+        </footer>
 
     </main>
 
 
-    <script src="js/app.js"></script>
+    <!-- JavaScript -->
+    <script src="./js/app.js"></script>
 
 </body>
+
 </html>
