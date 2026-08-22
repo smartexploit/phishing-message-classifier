@@ -1,36 +1,28 @@
 # Phishing Message Classifier
 
+[![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
+[![Pytest](https://img.shields.io/badge/Tests-Pytest-0A9EDC?logo=pytest&logoColor=white)](https://pytest.org/)
+[![Deployment](https://img.shields.io/badge/Deployed-Render-46E3B7?logo=render&logoColor=black)](https://render.com/)
+
 A machine-learning web application that classifies text messages as either **SPAM** or **LEGITIMATE**.
 
 This project was built as a personal portfolio project while learning Machine Learning, Traditional Programming, API development, testing, and application security.
 
 ---
 
-## 🚀 Live Demo
+## 🌐 Live Demo
 
-### Live Frontend
+**[Launch the Phishing Message Classifier](https://phishing-message-classifier-1.onrender.com)**
 
-**https://phishing-message-classifier-1.onrender.com**
+**[Open FastAPI Documentation](https://phishing-message-classifier.onrender.com/docs)**
 
-The production web interface allows users to enter a message and receive a machine-learning classification directly from the browser.
-
-### Live Backend API
-
-**https://phishing-message-classifier.onrender.com**
-
-### Interactive API Documentation
-
-**https://phishing-message-classifier.onrender.com/docs**
-
-The deployed FastAPI backend provides interactive Swagger documentation for testing the API.
-
-### Source Code
-
-**https://github.com/smartexploit/phishing-message-classifier**
+**[View Source Code](https://github.com/smartexploit/phishing-message-classifier)**
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 Spam and phishing-style messages are common examples of unwanted or potentially harmful digital communication.
 
