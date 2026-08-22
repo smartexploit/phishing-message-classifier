@@ -11,7 +11,7 @@ const resultIcon = document.getElementById("result-icon");
 
 const errorMessage = document.getElementById("error-message");
 
-const API_URL = "http://127.0.0.1:8000/predict";
+const API_URL = "https://phishing-message-classifier.onrender.com/predict";
 const MAX_LENGTH = 2000;
 
 
