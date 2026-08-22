@@ -6,7 +6,31 @@ This project was built as a personal portfolio project while learning Machine Le
 
 ---
 
-## Project Overview
+## 🚀 Live Demo
+
+### Live Frontend
+
+**https://phishing-message-classifier-1.onrender.com**
+
+The production web interface allows users to enter a message and receive a machine-learning classification directly from the browser.
+
+### Live Backend API
+
+**https://phishing-message-classifier.onrender.com**
+
+### Interactive API Documentation
+
+**https://phishing-message-classifier.onrender.com/docs**
+
+The deployed FastAPI backend provides interactive Swagger documentation for testing the API.
+
+### Source Code
+
+**https://github.com/smartexploit/phishing-message-classifier**
+
+---
+
+## 📌 Project Overview
 
 Spam and phishing-style messages are common examples of unwanted or potentially harmful digital communication.
 
@@ -16,7 +40,7 @@ The final application allows a user to enter a message through a web interface a
 
 ---
 
-## Objectives
+## 🎯 Objectives
 
 The project was designed to:
 
@@ -30,62 +54,51 @@ The project was designed to:
 - Connect the frontend to the prediction API.
 - Write automated tests.
 - Apply basic API security and input validation practices.
+- Deploy the frontend and backend to the cloud.
 
 ---
 
-## Application Architecture
+## 🏗️ Application Architecture
 
 ```text
-                    USER
-                      |
-                      v
-             +----------------+
-             |    FRONTEND    |
-             | HTML/CSS/JS    |
-             +-------+--------+
-                     |
-                     | POST /predict
-                     v
-             +----------------+
-             |    FASTAPI     |
-             |    Backend     |
-             +-------+--------+
-                     |
-                     v
-             +----------------+
-             | Prediction API |
-             +-------+--------+
-                     |
-                     v
-             +----------------+
-             |  ML Pipeline   |
-             | TF-IDF + Model |
-             +-------+--------+
-                     |
-                     v
-             SPAM / LEGITIMATE
+                         USER
+                           |
+                           v
+              +-------------------------+
+              |     RENDER FRONTEND     |
+              |    HTML / CSS / JS      |
+              +------------+------------+
+                           |
+                           | HTTPS
+                           | POST /predict
+                           v
+              +-------------------------+
+              |      RENDER BACKEND     |
+              |         FastAPI         |
+              +------------+------------+
+                           |
+                           v
+              +-------------------------+
+              |    Prediction Pipeline  |
+              |     TF-IDF + ML Model   |
+              +------------+------------+
+                           |
+                           v
+                    SPAM / LEGITIMATE
 
-             Dataset
-
-## Demo
+🎬 Demo
 
 The application provides a browser-based interface for submitting messages and receiving machine-learning classifications.
 
-### Spam Classification
+Spam Classification
 
-![Spam Classification](screenshots/spam-result.png)
+Legitimate Classification
 
-### Legitimate Classification
+FastAPI Documentation
 
-![Legitimate Classification](screenshots/legitimate-result.png)
+Automated Tests
 
-### FastAPI Documentation
-
-![FastAPI Documentation](screenshots/api-docs.png)
-
-### Automated Tests
-
-![Automated Tests](screenshots/tests.png)
+📊 Dataset
 
 The project uses the SMS Spam Collection dataset.
 
@@ -97,7 +110,8 @@ Exploratory data analysis
 Text preprocessing
 Model training
 Model evaluation
-Traditional Programming Approach
+Traditional programming baseline development
+🧠 Traditional Programming Approach
 
 Before implementing machine learning, a rule-based baseline was developed.
 
@@ -108,7 +122,7 @@ Examples of rule signals include:
 Suspicious keywords
 Promotional language
 Urgency
-Prize/reward language
+Prize or reward language
 Suspicious call-to-action patterns
 Limitation
 
@@ -118,7 +132,7 @@ A message that does not match an existing rule can easily be missed.
 
 This motivated the machine-learning approach.
 
-Machine Learning Approach
+🤖 Machine Learning Approach
 
 The machine-learning classifier treats the problem as a supervised text-classification task.
 
@@ -144,7 +158,10 @@ Prediction
 
 The project uses TF-IDF to convert text into numerical features and a classification model to make predictions.
 
-Model Evaluation
+The trained model is saved as:
+
+models/final_phishing_classifier.joblib
+📈 Model Evaluation
 
 The model was evaluated using:
 
@@ -158,11 +175,11 @@ These metrics were selected because accuracy alone does not provide enough infor
 
 In particular, precision and recall help evaluate the consequences of incorrect classifications.
 
-Backend
+⚙️ Backend
 
 The backend was built using FastAPI.
 
-Endpoint
+API Endpoint
 POST /predict
 Request
 {
@@ -176,7 +193,11 @@ Response
 
 The exact probability returned depends on the trained model.
 
-Frontend
+API Base URL
+https://phishing-message-classifier.onrender.com
+Interactive Documentation
+https://phishing-message-classifier.onrender.com/docs
+🌐 Frontend
 
 The frontend was built using:
 
@@ -191,7 +212,11 @@ Submit the message for analysis.
 Receive the ML classification.
 View the estimated spam probability.
 View an interpretation of the result.
-Testing
+Receive validation and error messages.
+
+The production frontend communicates with the deployed FastAPI backend through HTTPS.
+
+🧪 Testing
 
 Automated tests were written using pytest.
 
@@ -203,11 +228,13 @@ Valid prediction requests
 Empty input validation
 Message length validation
 API response structure
-
-Current test status:
-
+Current Test Status
 7 passed
-Security Considerations
+
+Tests can be executed locally with:
+
+python -m pytest
+🔐 Security Considerations
 
 The project includes basic security-oriented practices such as:
 
@@ -219,9 +246,11 @@ Generic internal server error messages.
 Avoidance of unnecessary data in API responses.
 Validation of malformed requests.
 
-CORS is restricted to the local frontend origin during development.
+The API restricts accepted frontend origins through CORS configuration.
 
-Limitations
+The application is intended as an educational project and does not claim to provide production-grade phishing protection.
+
+⚠️ Limitations
 
 This project is an educational machine-learning application and should not be treated as a definitive phishing detection system.
 
@@ -237,7 +266,7 @@ Lack of contextual information about URLs, domains, senders, and attachments
 
 A production-grade phishing detection system would require additional signals and stronger security controls.
 
-Project Structure
+📁 Project Structure
 phishing-message-classifier/
 │
 ├── app/
@@ -255,6 +284,7 @@ phishing-message-classifier/
 │       └── app.js
 │
 ├── models/
+│   └── final_phishing_classifier.joblib
 │
 ├── notebooks/
 │   ├── 01_dataset_exploration.ipynb
@@ -274,22 +304,20 @@ phishing-message-classifier/
 ├── .gitignore
 ├── README.md
 └── requirements.txt
-Running the Project Locally
-1. Clone the repository
-git clone <your-repository-url>
+💻 Running the Project Locally
+1. Clone the Repository
+git clone https://github.com/smartexploit/phishing-message-classifier.git
 cd phishing-message-classifier
-2. Create a virtual environment
+2. Create a Virtual Environment
 python -m venv .venv
-3. Activate the environment
-
-Windows PowerShell:
-
+3. Activate the Environment
+Windows PowerShell
 .\.venv\Scripts\Activate.ps1
-4. Install dependencies
+4. Install Dependencies
 pip install -r requirements.txt
-5. Run the tests
+5. Run the Tests
 python -m pytest
-6. Start the FastAPI server
+6. Start the FastAPI Server
 python -m uvicorn app.main:app --reload
 
 The API will be available at:
@@ -299,33 +327,130 @@ http://127.0.0.1:8000
 Interactive API documentation:
 
 http://127.0.0.1:8000/docs
-7. Run the frontend
+7. Run the Frontend
 
-Open the frontend using a local development server such as VS Code Live Server.
+Open the frontend/index.html file using a local development server such as VS Code Live Server.
 
-The frontend communicates with:
+During local development, the frontend communicates with:
 
 http://127.0.0.1:8000/predict
-Technologies
-Python
-Pandas
-NumPy
-Scikit-learn
-Joblib
+☁️ Deployment
+
+The application is deployed as two separate Render services:
+
+A Static Site for the frontend.
+A Web Service for the FastAPI backend.
+🌐 Live Frontend
+https://phishing-message-classifier-1.onrender.com
+
+The frontend provides the user interface for submitting messages and displaying classification results.
+
+🔌 Live Backend API
+https://phishing-message-classifier.onrender.com
+Prediction Endpoint
+POST https://phishing-message-classifier.onrender.com/predict
+API Documentation
+https://phishing-message-classifier.onrender.com/docs
+🏗️ Production Architecture
+                         USER
+                           |
+                           v
+              +-------------------------+
+              |     Render Frontend     |
+              | HTML / CSS / JavaScript |
+              +------------+------------+
+                           |
+                           | HTTPS
+                           | POST /predict
+                           v
+              +-------------------------+
+              |     Render Backend      |
+              |         FastAPI         |
+              +------------+------------+
+                           |
+                           v
+              +-------------------------+
+              |   Prediction Pipeline   |
+              |   TF-IDF + ML Model     |
+              +------------+------------+
+                           |
+                           v
+                    SPAM / LEGITIMATE
+⚙️ Deployment Configuration
+Frontend
+
+The frontend is deployed as a Render Static Site.
+
+Service Type: Static Site
+Root Directory: frontend
+Build Command: None
+Publish Directory: .
+Backend
+
+The backend is deployed as a Render Web Service.
+
+Service Type: Web Service
+Root Directory: .
+Build Command: pip install -r requirements.txt
+Start Command: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+
+The backend uses the trained model stored at:
+
+models/final_phishing_classifier.joblib
+
+The production frontend communicates with the deployed API rather than the local development server.
+
+🔄 Production API Flow
+Browser
+   |
+   | HTTPS POST /predict
+   | { "message": "..." }
+   v
 FastAPI
-Pydantic
+   |
+   v
+classify_message()
+   |
+   v
+Trained ML Model
+   |
+   v
+Prediction + Spam Probability
+   |
+   v
+Frontend Result
+
+The deployed application was tested end-to-end to verify communication between the frontend, FastAPI backend, and machine-learning model.
+
+🛠️ Technologies Used
+Machine Learning
+Python
+Scikit-learn
+NumPy
+Pandas
+Joblib
+TF-IDF Vectorization
+Backend
+FastAPI
 Uvicorn
-Pytest
-HTML
-CSS
+Pydantic
+Frontend
+HTML5
+CSS3
 JavaScript
+Testing
+Pytest
+Deployment
+Render
+GitHub
+Development
 Jupyter Notebook
-Git/GitHub
-Future Improvements
+Git
+GitHub
+🚀 Future Improvements
 
 Possible future improvements include:
 
-Deploying the frontend and API.
 Adding authentication and rate limiting.
 Improving model performance.
 Experimenting with additional classification algorithms.
@@ -334,8 +459,47 @@ Adding explainable-AI features.
 Adding a larger and more diverse dataset.
 Adding monitoring and logging.
 Building a more advanced security-analysis pipeline.
-Disclaimer
+Adding confidence thresholds for classification.
+Improving the frontend with richer security insights.
+Adding model versioning and performance monitoring.
+Integrating additional phishing indicators such as suspicious URLs, domains, and sender information.
+📚 Learning Outcomes
+
+This project provided practical experience in:
+
+Data exploration and preprocessing.
+Supervised machine learning.
+Text classification.
+TF-IDF feature engineering.
+Model evaluation.
+Traditional rule-based programming.
+REST API development.
+FastAPI application development.
+Frontend and backend integration.
+API validation.
+CORS configuration.
+Automated testing.
+Git and GitHub workflows.
+Cloud deployment.
+Basic application security practices.
+⚖️ Disclaimer
 
 This project is intended for educational and portfolio purposes.
 
 The model's output is a machine-learning prediction and should not be considered a definitive security verdict.
+
+Users should not rely solely on this classifier when determining whether a message is safe, malicious, or fraudulent.
+
+👤 Author
+
+Ogunlade Faith Kayode
+
+Machine Learning • AI • Cybersecurity • Digital Solutions
+
+GitHub:
+
+https://github.com/smartexploit
+
+Project Repository:
+
+https://github.com/smartexploit/phishing-message-classifier
