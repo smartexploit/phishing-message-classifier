@@ -14,7 +14,9 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:5500"],
+    allow_origins=[
+        "http://127.0.0.1:5500",
+    ],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -32,6 +34,7 @@ class MessageRequest(BaseModel):
 
 @app.get("/")
 def root():
+
     return {
         "message": "Phishing Message Classifier API is running."
     }
@@ -41,12 +44,15 @@ def root():
 def predict(request: MessageRequest):
 
     try:
-        result = classify_message(request.message)
+
+        result = classify_message(
+            request.message
+        )
 
         return {
-    "prediction": result["label"],
-    "spam_probability": result["spam_probability"]
-}
+            "prediction": result["label"],
+            "spam_probability": result["spam_probability"]
+        }
 
     except ValueError as error:
 
