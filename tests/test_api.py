@@ -1,4 +1,4 @@
-from fastapi.testclient import TestClient
+﻿from fastapi.testclient import TestClient
 
 from app.main import app
 
@@ -13,7 +13,7 @@ def test_root():
 
     data = response.json()
 
-    assert data["message"] == "Phishing Message Classifier API is running."
+    assert data["message"] == "ScamShield NG API is running."
 
 
 def test_predict_spam():
