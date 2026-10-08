@@ -1,497 +1,692 @@
-# Phishing Message Classifier
+﻿# ScamShield NG - Multilingual Scam & Phishing Detection
 
-[![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-API-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ML-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
-[![Pytest](https://img.shields.io/badge/Tests-Pytest-0A9EDC?logo=pytest&logoColor=white)](https://pytest.org/)
-[![Deployment](https://img.shields.io/badge/Deployed-Render-46E3B7?logo=render&logoColor=black)](https://render.com/)
+**ScamShield NG** is a multilingual scam and phishing message analysis system designed to explore how traditional machine-learning classification can be combined with local-language semantic analysis for Nigerian communication contexts.
 
-A machine-learning web application that classifies text messages as either **SPAM** or **LEGITIMATE**.
+The project began as a conventional SMS spam classifier and has evolved into a security-focused prototype combining:
 
-This project was built as a personal portfolio project while learning Machine Learning, Traditional Programming, API development, testing, and application security.
+- Traditional machine learning
+- TF-IDF text representation
+- Logistic Regression
+- FastAPI
+- N-ATLaS multilingual semantic analysis
+- Local GGUF model inference through llama.cpp
+- Structured JSON model outputs
+- Controlled multilingual evaluation
+- Reproducible evaluation artifacts
 
----
-
-## 🌐 Live Demo
-
-**[Launch the Phishing Message Classifier](https://phishing-message-classifier-1.onrender.com)**
-
-**[Open FastAPI Documentation](https://phishing-message-classifier.onrender.com/docs)**
-
-**[View Source Code](https://github.com/smartexploit/phishing-message-classifier)**
+> **Important:** ScamShield NG is a research and portfolio prototype. Its evaluation results are not production-level security guarantees.
 
 ---
 
-## Project Overview
+## 1. Why ScamShield NG?
 
-Spam and phishing-style messages are common examples of unwanted or potentially harmful digital communication.
+Traditional SMS spam classifiers can perform well on datasets similar to their training data but may struggle with:
 
-The goal of this project is to demonstrate how traditional rule-based programming can be compared with a machine-learning approach for text classification.
+- Nigerian English expressions
+- Yoruba messages
+- Hausa messages
+- Igbo messages
+- Context-dependent scam language
+- Credential and OTP theft attempts
+- Financial impersonation
+- Fake rewards and prize messages
+- Social-engineering language
 
-The final application allows a user to enter a message through a web interface and receive an ML-based classification.
-
----
-
-## 🎯 Objectives
-
-The project was designed to:
-
-- Explore and preprocess a real-world SMS dataset.
-- Build a traditional rule-based classification baseline.
-- Build a machine-learning text classifier.
-- Compare traditional programming with machine learning.
-- Evaluate the ML model using standard classification metrics.
-- Expose the trained model through a FastAPI backend.
-- Build a browser-based frontend.
-- Connect the frontend to the prediction API.
-- Write automated tests.
-- Apply basic API security and input validation practices.
-- Deploy the frontend and backend to the cloud.
-
----
-
-## 🏗️ Application Architecture
+ScamShield NG therefore explores a two-layer approach:
 
 ```text
-                         USER
-                           |
-                           v
-              +-------------------------+
-              |     RENDER FRONTEND     |
-              |    HTML / CSS / JS      |
-              +------------+------------+
-                           |
-                           | HTTPS
-                           | POST /predict
-                           v
-              +-------------------------+
-              |      RENDER BACKEND     |
-              |         FastAPI         |
-              +------------+------------+
-                           |
-                           v
-              +-------------------------+
-              |    Prediction Pipeline  |
-              |     TF-IDF + ML Model   |
-              +------------+------------+
-                           |
-                           v
-                    SPAM / LEGITIMATE
+                    USER MESSAGE
+                         |
+                         v
+                 +---------------+
+                 |   FastAPI API  |
+                 +-------+-------+
+                         |
+             +-----------+-----------+
+             |                       |
+             v                       v
+      /predict                  /analyze
+             |                       |
+             v                       v
+       ML Baseline             N-ATLaS
+             |                  Semantic
+             |                  Analysis
+             v                       |
+      Spam Probability              v
+             |              Structured Result
+             |                       |
+             +-----------+-----------+
+                         |
+                         v
+                Security Analysis
+```
 
-🎬 Demo
+---
 
-The application provides a browser-based interface for submitting messages and receiving machine-learning classifications.
+# 2. System Architecture
 
-Spam Classification
+## Machine-Learning Baseline
 
-Legitimate Classification
+The original classifier uses a supervised text-classification pipeline:
 
-FastAPI Documentation
-
-Automated Tests
-
-📊 Dataset
-
-The project uses the SMS Spam Collection dataset.
-
-The dataset contains labeled SMS messages classified as spam or legitimate (ham).
-
-The dataset was used for:
-
-Exploratory data analysis
-Text preprocessing
-Model training
-Model evaluation
-Traditional programming baseline development
-🧠 Traditional Programming Approach
-
-Before implementing machine learning, a rule-based baseline was developed.
-
-The traditional approach relies on manually defined patterns and rules that attempt to identify suspicious messages.
-
-Examples of rule signals include:
-
-Suspicious keywords
-Promotional language
-Urgency
-Prize or reward language
-Suspicious call-to-action patterns
-Limitation
-
-Rule-based systems depend heavily on manually created rules.
-
-A message that does not match an existing rule can easily be missed.
-
-This motivated the machine-learning approach.
-
-🤖 Machine Learning Approach
-
-The machine-learning classifier treats the problem as a supervised text-classification task.
-
-The general pipeline is:
-
+```text
 Raw Message
-     |
-     v
-Text Preprocessing
      |
      v
 TF-IDF Vectorization
      |
      v
-Machine Learning Model
+Logistic Regression
      |
      v
-Prediction
+SPAM / LEGITIMATE
      |
-     +----> SPAM
-     |
-     +----> LEGITIMATE
+     v
+Spam Probability
+```
 
-The project uses TF-IDF to convert text into numerical features and a classification model to make predictions.
+The saved model is:
 
-The trained model is saved as:
-
+```text
 models/final_phishing_classifier.joblib
-📈 Model Evaluation
+```
 
-The model was evaluated using:
+The pipeline uses:
 
-Accuracy
-Precision
-Recall
-F1-score
-Confusion Matrix
+- `TfidfVectorizer`
+- Unigram and bigram features
+- `LogisticRegression`
+- Balanced class weighting
 
-These metrics were selected because accuracy alone does not provide enough information for a classification problem.
+The baseline remains important because it provides a measurable reference point for evaluating the multilingual semantic layer.
 
-In particular, precision and recall help evaluate the consequences of incorrect classifications.
+---
 
-⚙️ Backend
+# 3. N-ATLaS Semantic Layer
 
-The backend was built using FastAPI.
+ScamShield NG integrates **N-ATLaS**, a multilingual Llama-3-based model supporting:
 
-API Endpoint
-POST /predict
-Request
+- English
+- Hausa
+- Igbo
+- Yoruba
+
+The model is served locally using:
+
+```text
+llama.cpp
+    |
+    v
+GGUF Q4_K_M
+    |
+    v
+N-ATLaS
+```
+
+The quantized model makes local CPU-based experimentation possible on hardware where loading the full-precision 8B model would be impractical.
+
+The N-ATLaS integration analyzes:
+
+- Phishing
+- Fraud
+- Financial scams
+- OTP or credential theft
+- Impersonation
+- Malicious links
+- Fake prizes or rewards
+- Loan scams
+- Account takeover attempts
+- Coercive financial requests
+- Other social-engineering patterns
+
+---
+
+# 4. Structured Model Output
+
+The semantic analysis endpoint uses a JSON schema to enforce a predictable response structure.
+
+Example structure:
+
+```json
+{
+  "verdict": "SCAM",
+  "confidence": 0.9,
+  "scam_type": "credential or OTP theft",
+  "explanation": "The message requests an OTP in connection with a claimed financial reward.",
+  "user_language": "Yoruba"
+}
+```
+
+The schema requires:
+
+```text
+verdict
+confidence
+scam_type
+explanation
+user_language
+```
+
+The schema controls the **format and allowed value types**. It does not guarantee that the model's semantic judgment is correct.
+
+---
+
+# 5. API
+
+## `GET /`
+
+Returns service information and the available analysis services.
+
+## `POST /predict`
+
+Runs the traditional machine-learning classifier.
+
+Request:
+
+```json
 {
   "message": "Congratulations! You have won a free prize!"
 }
-Response
+```
+
+Example response:
+
+```json
 {
   "prediction": "SPAM",
   "spam_probability": 0.94
 }
+```
 
-The exact probability returned depends on the trained model.
+## `POST /analyze`
 
-API Base URL
-https://phishing-message-classifier.onrender.com
-Interactive Documentation
-https://phishing-message-classifier.onrender.com/docs
-🌐 Frontend
+Runs the N-ATLaS multilingual semantic analysis.
 
-The frontend was built using:
+Request:
 
-HTML
-CSS
-JavaScript
+```json
+{
+  "message": "E ku oriire! O ti gba owo eye. Fi OTP re ranse lati gba owo naa."
+}
+```
 
-The interface allows users to:
+The endpoint returns a structured security analysis containing the verdict, confidence, scam type, explanation, and detected language.
 
-Enter a message.
-Submit the message for analysis.
-Receive the ML classification.
-View the estimated spam probability.
-View an interpretation of the result.
-Receive validation and error messages.
+Interactive API documentation is available through the FastAPI `/docs` endpoint when the application is running.
 
-The production frontend communicates with the deployed FastAPI backend through HTTPS.
+---
 
-🧪 Testing
+# 6. Controlled Multilingual Evaluation
 
-Automated tests were written using pytest.
+A controlled evaluation was created to compare the original ML baseline against ScamShield NG.
 
-The test suite covers:
+The evaluation contains:
 
-Prediction functionality
-API availability
-Valid prediction requests
-Empty input validation
-Message length validation
-API response structure
-Current Test Status
-7 passed
+- English
+- Nigerian English
+- Yoruba
+- Hausa
+- Igbo
 
-Tests can be executed locally with:
+Each language contains scam and legitimate control examples.
 
-python -m pytest
-🔐 Security Considerations
+### Results
 
-The project includes basic security-oriented practices such as:
+| System | Correct | Accuracy |
+|---|---:|---:|
+| Original ML baseline | 7 / 10 | 70% |
+| ScamShield NG | 9 / 10 | 90% |
 
-Input length validation.
-Request schema validation.
-Controlled CORS configuration.
-Separation between frontend and backend.
-Generic internal server error messages.
-Avoidance of unnecessary data in API responses.
-Validation of malformed requests.
+This represents a:
 
-The API restricts accepted frontend origins through CORS configuration.
+**20 percentage-point improvement**
 
-The application is intended as an educational project and does not claim to provide production-grade phishing protection.
+on this particular controlled evaluation.
 
-⚠️ Limitations
+An especially important observation was that the original baseline missed all three non-English scam examples in the controlled set, while ScamShield NG detected all three.
 
-This project is an educational machine-learning application and should not be treated as a definitive phishing detection system.
+These results should **not** be interpreted as production accuracy because the evaluation set is intentionally small and controlled.
 
-Potential limitations include:
+Detailed evidence is available in:
 
-False positives
-False negatives
-Dataset bias
-Limited training data
-Changing phishing techniques
-Adversarial or deliberately manipulated messages
-Lack of contextual information about URLs, domains, senders, and attachments
+```text
+data/evaluation/SCAMSHIELD_CONTROLLED_EVALUATION.md
+```
 
-A production-grade phishing detection system would require additional signals and stronger security controls.
+Results:
 
-📁 Project Structure
+```text
+data/evaluation/baseline_controlled_results.csv
+data/evaluation/scamshield_controlled_results.csv
+```
+
+---
+
+# 7. Independent ExAIS Evaluation
+
+The project also includes an independent evaluation using the ExAIS SMS Spam Dataset.
+
+The evaluation process includes:
+
+```text
+External Dataset
+       |
+       v
+Normalization
+       |
+       v
+Baseline Inference
+       |
+       v
+Performance Analysis
+       |
+       v
+Error Analysis
+```
+
+The normalized evaluation data and benchmark results are stored under:
+
+```text
+data/evaluation/
+```
+
+The original downloaded archive and extracted raw source files are intentionally excluded from Git.
+
+This separation helps keep the repository lightweight and distinguishes external source material from project-generated evaluation artifacts.
+
+---
+
+# 8. Important Evaluation Distinction
+
+ScamShield NG uses the term **SCAM** for messages exhibiting meaningful evidence of deceptive, fraudulent, malicious, or coercive intent.
+
+The original ML dataset primarily represents **SPAM versus HAM**.
+
+These concepts overlap but are not identical.
+
+For example:
+
+```text
+SPAM
+ |
+ +-- promotional messages
+ +-- unsolicited advertising
+ +-- bulk messages
+ +-- suspicious marketing
+
+SCAM
+ |
+ +-- credential theft
+ +-- OTP theft
+ +-- impersonation
+ +-- financial fraud
+ +-- fake rewards
+ +-- malicious social engineering
+```
+
+Therefore, benchmark results must be interpreted according to the dataset and task being evaluated.
+
+---
+
+# 9. Known Limitations
+
+The current prototype has several known limitations.
+
+### Nigerian English false positive
+
+A legitimate Nigerian English financial-transfer message was incorrectly classified as `SCAM` during the controlled evaluation.
+
+### Igbo language identification
+
+One legitimate Igbo message received the correct `LEGITIMATE` verdict but was incorrectly identified as Yoruba.
+
+This demonstrates an important distinction between:
+
+```text
+Correct security verdict
+```
+
+and:
+
+```text
+Correct language identification
+```
+
+Both need to be evaluated independently.
+
+### Dataset size
+
+The controlled multilingual benchmark contains only 10 messages.
+
+It is useful for demonstrating system behavior but is not large enough to establish production performance.
+
+### Language coverage
+
+The current N-ATLaS integration focuses on:
+
+- English
+- Nigerian English
+- Yoruba
+- Hausa
+- Igbo
+
+Other Nigerian languages are not currently covered by the semantic layer.
+
+### Model limitations
+
+LLM-based analysis can produce incorrect interpretations, especially when messages are ambiguous, abbreviated, deliberately obfuscated, or outside the model's strongest linguistic capabilities.
+
+### Security limitations
+
+The system does not currently perform comprehensive:
+
+- URL reputation analysis
+- Domain analysis
+- Sender identity verification
+- Attachment analysis
+- Device intelligence
+- Threat-intelligence correlation
+- Real-time fraud intelligence
+
+---
+
+# 10. Evaluation Philosophy
+
+ScamShield NG is intentionally being developed around measurable evidence rather than a single accuracy number.
+
+The evaluation strategy is:
+
+```text
+Baseline
+   |
+   v
+Controlled Multilingual Tests
+   |
+   v
+Independent Dataset Evaluation
+   |
+   v
+Error Analysis
+   |
+   v
+Identify Weaknesses
+   |
+   v
+Improve Dataset / Architecture
+   |
+   v
+Re-evaluate
+```
+
+This makes it possible to distinguish between:
+
+- Model improvement
+- Dataset effects
+- Language limitations
+- False positives
+- False negatives
+- Semantic failures
+- Language-identification failures
+
+---
+
+# 11. Project Structure
+
+```text
 phishing-message-classifier/
-│
-├── app/
-│   └── main.py
-│
-├── data/
-│   ├── raw/
-│   └── processed/
-│
-├── frontend/
-│   ├── index.html
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── app.js
-│
-├── models/
-│   └── final_phishing_classifier.joblib
-│
-├── notebooks/
-│   ├── 01_dataset_exploration.ipynb
-│   ├── 02_traditional_baseline.ipynb
-│   └── 03_machine_learning_baseline.ipynb
-│
-├── src/
-│   ├── __init__.py
-│   ├── predict.py
-│   ├── preprocessing.py
-│   └── train.py
-│
-├── tests/
-│   ├── test_predict.py
-│   └── test_api.py
-│
-├── .gitignore
-├── README.md
-└── requirements.txt
-💻 Running the Project Locally
-1. Clone the Repository
-git clone https://github.com/smartexploit/phishing-message-classifier.git
-cd phishing-message-classifier
-2. Create a Virtual Environment
+â”‚
+â”œâ”€â”€ app/
+â”‚   â””â”€â”€ main.py
+â”‚
+â”œâ”€â”€ data/
+â”‚   â”œâ”€â”€ raw/
+â”‚   â”œâ”€â”€ processed/
+â”‚   â””â”€â”€ evaluation/
+â”‚       â”œâ”€â”€ README.md
+â”‚       â”œâ”€â”€ SCAMSHIELD_ARCHITECTURE.md
+â”‚       â”œâ”€â”€ SCAMSHIELD_CONTROLLED_EVALUATION.md
+â”‚       â”œâ”€â”€ scamshield_schema.json
+â”‚       â”œâ”€â”€ baseline_controlled_results.csv
+â”‚       â”œâ”€â”€ scamshield_controlled_results.csv
+â”‚       â”œâ”€â”€ exais_normalized.csv
+â”‚       â”œâ”€â”€ exais_baseline_results.json
+â”‚       â”œâ”€â”€ parse_exais.py
+â”‚       â”œâ”€â”€ run_exais_baseline.py
+â”‚       â””â”€â”€ analyze_exais_errors.py
+â”‚
+â”œâ”€â”€ frontend/
+â”‚
+â”œâ”€â”€ models/
+â”‚   â””â”€â”€ final_phishing_classifier.joblib
+â”‚
+â”œâ”€â”€ notebooks/
+â”‚
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ predict.py
+â”‚   â””â”€â”€ natlas/
+â”‚       â””â”€â”€ client.py
+â”‚
+â”œâ”€â”€ tests/
+â”‚
+â”œâ”€â”€ baseline_check.py
+â”œâ”€â”€ requirements.txt
+â”œâ”€â”€ .gitignore
+â””â”€â”€ README.md
+```
+
+---
+
+# 12. Running Locally
+
+## Create an environment
+
+```powershell
 python -m venv .venv
-3. Activate the Environment
-Windows PowerShell
+```
+
+Activate it:
+
+```powershell
 .\.venv\Scripts\Activate.ps1
-4. Install Dependencies
+```
+
+Install the project dependencies:
+
+```powershell
 pip install -r requirements.txt
-5. Run the Tests
+```
+
+Run the tests:
+
+```powershell
 python -m pytest
-6. Start the FastAPI Server
+```
+
+Start the FastAPI application:
+
+```powershell
 python -m uvicorn app.main:app --reload
+```
 
 The API will be available at:
 
+```text
 http://127.0.0.1:8000
+```
 
-Interactive API documentation:
+FastAPI documentation:
 
+```text
 http://127.0.0.1:8000/docs
-7. Run the Frontend
+```
 
-Open the frontend/index.html file using a local development server such as VS Code Live Server.
+---
 
-During local development, the frontend communicates with:
+# 13. Running N-ATLaS Locally
 
-http://127.0.0.1:8000/predict
-☁️ Deployment
+ScamShield NG's semantic analysis requires the N-ATLaS model server.
 
-The application is deployed as two separate Render services:
+The local architecture is:
 
-A Static Site for the frontend.
-A Web Service for the FastAPI backend.
-🌐 Live Frontend
-https://phishing-message-classifier-1.onrender.com
+```text
+ScamShield FastAPI
+       |
+       | HTTP
+       v
+llama.cpp server
+       |
+       v
+N-ATLaS GGUF model
+```
 
-The frontend provides the user interface for submitting messages and displaying classification results.
+The model server runs independently from the FastAPI application.
 
-🔌 Live Backend API
-https://phishing-message-classifier.onrender.com
-Prediction Endpoint
-POST https://phishing-message-classifier.onrender.com/predict
-API Documentation
-https://phishing-message-classifier.onrender.com/docs
-🏗️ Production Architecture
-                         USER
-                           |
-                           v
-              +-------------------------+
-              |     Render Frontend     |
-              | HTML / CSS / JavaScript |
-              +------------+------------+
-                           |
-                           | HTTPS
-                           | POST /predict
-                           v
-              +-------------------------+
-              |     Render Backend      |
-              |         FastAPI         |
-              +------------+------------+
-                           |
-                           v
-              +-------------------------+
-              |   Prediction Pipeline   |
-              |   TF-IDF + ML Model     |
-              +------------+------------+
-                           |
-                           v
-                    SPAM / LEGITIMATE
-⚙️ Deployment Configuration
-Frontend
+Example:
 
-The frontend is deployed as a Render Static Site.
+```text
+127.0.0.1:8080
+```
 
-Service Type: Static Site
-Root Directory: frontend
-Build Command: None
-Publish Directory: .
-Backend
+The ScamShield API then exposes the semantic analysis through:
 
-The backend is deployed as a Render Web Service.
+```text
+POST /analyze
+```
 
-Service Type: Web Service
-Root Directory: .
-Build Command: pip install -r requirements.txt
-Start Command: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+The N-ATLaS model files are not stored in this repository.
 
-The backend uses the trained model stored at:
+---
 
-models/final_phishing_classifier.joblib
+# 14. Technology Stack
 
-The production frontend communicates with the deployed API rather than the local development server.
+## AI / Machine Learning
 
-🔄 Production API Flow
-Browser
-   |
-   | HTTPS POST /predict
-   | { "message": "..." }
-   v
-FastAPI
-   |
-   v
-classify_message()
-   |
-   v
-Trained ML Model
-   |
-   v
-Prediction + Spam Probability
-   |
-   v
-Frontend Result
+- Python
+- scikit-learn
+- NumPy
+- Pandas
+- TF-IDF
+- Logistic Regression
+- N-ATLaS
+- Llama-3 architecture
+- GGUF
+- llama.cpp
 
-The deployed application was tested end-to-end to verify communication between the frontend, FastAPI backend, and machine-learning model.
+## Backend
 
-🛠️ Technologies Used
-Machine Learning
-Python
-Scikit-learn
-NumPy
-Pandas
-Joblib
-TF-IDF Vectorization
-Backend
-FastAPI
-Uvicorn
-Pydantic
-Frontend
-HTML5
-CSS3
-JavaScript
-Testing
-Pytest
-Deployment
-Render
-GitHub
-Development
-Jupyter Notebook
-Git
-GitHub
-🚀 Future Improvements
+- FastAPI
+- Uvicorn
+- Pydantic
+- Requests
 
-Possible future improvements include:
+## Frontend
 
-Adding authentication and rate limiting.
-Improving model performance.
-Experimenting with additional classification algorithms.
-Adding URL and domain analysis.
-Adding explainable-AI features.
-Adding a larger and more diverse dataset.
-Adding monitoring and logging.
-Building a more advanced security-analysis pipeline.
-Adding confidence thresholds for classification.
-Improving the frontend with richer security insights.
-Adding model versioning and performance monitoring.
-Integrating additional phishing indicators such as suspicious URLs, domains, and sender information.
-📚 Learning Outcomes
+- HTML5
+- CSS3
+- JavaScript
 
-This project provided practical experience in:
+## Testing
 
-Data exploration and preprocessing.
-Supervised machine learning.
-Text classification.
-TF-IDF feature engineering.
-Model evaluation.
-Traditional rule-based programming.
-REST API development.
-FastAPI application development.
-Frontend and backend integration.
-API validation.
-CORS configuration.
-Automated testing.
-Git and GitHub workflows.
-Cloud deployment.
-Basic application security practices.
-⚖️ Disclaimer
+- Pytest
+- Controlled multilingual evaluation
+- Independent dataset evaluation
+- Error analysis
 
-This project is intended for educational and portfolio purposes.
+## Development
 
-The model's output is a machine-learning prediction and should not be considered a definitive security verdict.
+- Git
+- GitHub
+- Jupyter Notebook
+- PowerShell
 
-Users should not rely solely on this classifier when determining whether a message is safe, malicious, or fraudulent.
+## Deployment
 
-👤 Author
+The original application is deployed using separate frontend and FastAPI backend services.
 
-Ogunlade Faith Kayode
+---
 
-Machine Learning • AI • Cybersecurity • Digital Solutions
+# 15. Development Evolution
 
-GitHub:
+The project evolved through several stages:
 
-https://github.com/smartexploit
+```text
+Traditional Rule-Based Detection
+             |
+             v
+SMS Spam Machine Learning
+             |
+             v
+FastAPI Deployment
+             |
+             v
+Independent Evaluation
+             |
+             v
+Nigerian Multilingual Evaluation
+             |
+             v
+N-ATLaS Integration
+             |
+             v
+ScamShield NG
+```
 
-Project Repository:
+The goal is not simply to replace the original classifier with an LLM.
 
-https://github.com/smartexploit/phishing-message-classifier
+Instead, the original model is retained as a measurable baseline while the multilingual semantic layer is evaluated against it.
+
+---
+
+# 16. Future Improvements
+
+Planned improvements include:
+
+1. Build a larger verified Nigerian multilingual evaluation dataset.
+2. Add a dedicated language-identification component.
+3. Improve Nigerian English handling.
+4. Develop hybrid decision logic between the ML baseline and semantic model.
+5. Evaluate additional Nigerian languages.
+6. Introduce URL and domain intelligence.
+7. Add explainable security indicators.
+8. Add model and evaluation versioning.
+9. Add monitoring and audit logging.
+10. Evaluate LoRA or QLoRA fine-tuning after sufficient high-quality multilingual data becomes available.
+11. Add larger independent test sets.
+12. Evaluate precision, recall, F1, confusion matrices, and per-language performance.
+
+---
+
+# 17. Responsible Use
+
+ScamShield NG is intended for:
+
+- Research
+- Education
+- Cybersecurity experimentation
+- Multilingual AI evaluation
+- Portfolio demonstration
+- Community-oriented security research
+
+It should not be treated as an autonomous authority for determining whether a communication is safe.
+
+Security decisions should consider additional evidence and, where appropriate, human review.
+
+---
+
+# 18. Author
+
+**Ogunlade Faith Kayode**
+
+AI â€¢ Cybersecurity â€¢ Machine Learning â€¢ Digital Solutions
+
+GitHub: `smartexploit`
+
+---
+
+## Disclaimer
+
+This project is an experimental AI and cybersecurity system.
+
+The reported evaluation results come from specific datasets and controlled tests. They do not represent guaranteed real-world detection performance.
+
+The system may produce false positives and false negatives and should not be used as the sole mechanism for making high-impact security or financial decisions.
