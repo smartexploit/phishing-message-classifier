@@ -1,0 +1,32 @@
+﻿{
+  "type": "object",
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "enum": ["SCAM", "LEGITIMATE"]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "scam_type": {
+      "type": "string"
+    },
+    "explanation": {
+      "type": "string"
+    },
+    "user_language": {
+      "type": "string",
+      "enum": ["English", "Nigerian English", "Yoruba", "Hausa", "Igbo"]
+    }
+  },
+  "required": [
+    "verdict",
+    "confidence",
+    "scam_type",
+    "explanation",
+    "user_language"
+  ],
+  "additionalProperties": false
+}

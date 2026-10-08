@@ -25,3 +25,7 @@ data/raw/*
 # OS files
 .DS_Store
 Thumbs.db
+# External evaluation archive and extracted source data
+# External evaluation archive and extracted source data
+data/evaluation/ExAIS_SMS_Spam_Dataset.zip
+data/evaluation/exais_raw/

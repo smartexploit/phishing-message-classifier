@@ -1,0 +1,48 @@
+{
+  "dataset": "ExAIS normalized",
+  "records": 5240,
+  "model": "TF-IDF + Logistic Regression",
+  "accuracy": 0.6440839694656488,
+  "spam_precision": 0.6230339928970066,
+  "spam_recall": 0.5225531914893617,
+  "spam_f1": 0.5683869474658644,
+  "macro_f1": 0.6327890249587805,
+  "errors": 1865,
+  "confusion_matrix": [
+    [
+      2147,
+      743
+    ],
+    [
+      1122,
+      1228
+    ]
+  ],
+  "classification_report": {
+    "HAM": {
+      "precision": 0.6567757724074641,
+      "recall": 0.7429065743944636,
+      "f1-score": 0.6971911024516967,
+      "support": 2890.0
+    },
+    "SPAM": {
+      "precision": 0.6230339928970066,
+      "recall": 0.5225531914893617,
+      "f1-score": 0.5683869474658644,
+      "support": 2350.0
+    },
+    "accuracy": 0.6440839694656488,
+    "macro avg": {
+      "precision": 0.6399048826522353,
+      "recall": 0.6327298829419127,
+      "f1-score": 0.6327890249587805,
+      "support": 5240.0
+    },
+    "weighted avg": {
+      "precision": 0.6416434857949498,
+      "recall": 0.6440839694656488,
+      "f1-score": 0.639425880272936,
+      "support": 5240.0
+    }
+  }
+}
