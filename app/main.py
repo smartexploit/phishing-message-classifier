@@ -1,4 +1,4 @@
-
+﻿
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -24,6 +24,7 @@ app.add_middleware(
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "https://phishing-message-classifier-1.onrender.com",
+    "https://scamshield-ng-web.onrender.com",
 ],
     
     allow_credentials=False,
@@ -105,3 +106,4 @@ def analyze(request: MessageRequest):
             status_code=500,
             detail="An internal N-ATLaS analysis error occurred.",
         )
+
