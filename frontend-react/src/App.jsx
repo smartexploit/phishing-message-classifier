@@ -6,107 +6,105 @@ const copy = {
   en: {
     name: "English", tagline: "DIGITAL SAFETY FOR EVERYONE",
     title: "Pause. Check. Stay safe.",
-    subtitle: "Check suspicious messages before you click a link, send money, or share personal information.",
+    subtitle: "Check suspicious messages before clicking links, sending money, or sharing personal information.",
     language: "Interface language", mode: "Analysis method",
     ml: "Classic ML", ai: "Multilingual AI",
-    message: "Message to check", placeholder: "Paste the SMS, WhatsApp message, or alert here?",
+    message: "Message to check", placeholder: "Paste the SMS, WhatsApp message, or alert here",
     count: "characters", example: "Try a sample", suspicious: "Suspicious prize message",
     normal: "Normal message", clear: "Clear", analyze: "Check this message",
-    loading: "Checking message?", privacy: "Protect your privacy",
-    privacyText: "Never paste passwords, PINs, OTPs, or full bank details. Only submit the message text you need to check.",
+    loading: "Checking message", privacy: "Protect your privacy",
+    privacyText: "Never paste passwords, PINs, OTPs, or full bank details. Submit only the message text you need to check.",
     result: "Analysis result", scam: "Likely scam", safe: "No clear scam signs detected",
     uncertain: "Needs caution", detected: "Detected message language",
     category: "Possible scam type", confidence: "Model confidence",
-    explanation: "Why this result?", advice: "What should you do?",
-    adviceScam: "Do not click links, send money, or share codes. Verify the sender using an official contact channel.",
-    adviceSafe: "This result does not guarantee the message is safe. Verify unexpected requests independently.",
+    explanation: "Why this result", advice: "What should you do",
+    adviceScam: "Do not click links, send money, or share codes. Verify the sender through an official contact channel.",
+    adviceSafe: "This result does not guarantee that the message is safe. Verify unexpected requests independently.",
     adviceUncertain: "Do not act on the message yet. Verify the sender and request through an official channel.",
     errorEmpty: "Enter a message to check.", errorLong: "Keep the message within 2,000 characters.",
     errorConnect: "Could not reach the analysis service. Check that the selected API is running and try again.",
     footer: "An AI-assisted safety tool. Results are guidance, not a guarantee.",
     ready: "Ready to check", mlNote: "Checks text patterns associated with spam.",
-    aiNote: "Uses multilingual semantic analysis. Local API required during development.",
-    confidenceNote: "Confidence is the model's estimate, not a guarantee of correctness.",
+    aiNote: "Uses multilingual semantic analysis. A local API is required during development.",
+    confidenceNote: "Confidence is the model's estimate, not a guarantee of correctness."
   },
   yo: {
-    name: "Yor?b?", tagline: "??B? ?R?Y?N F?N GBOGBO ?N?Y?N",
-    title: "D?r?. ??y??w?. D??b? bo ara r?.",
-    subtitle: "??y??w? ?w?n ?fir?n??? t? ? ?iy?m?j? k? o t? t? ?j?p??, fi ow? r?n???, t?b? p?n ?s?f?nni ara ?ni.",
-    language: "?d? oj?-?p?", mode: "??n? ???y??w?",
-    ml: "??k?? ??r? (ML)", ai: "AI on?r?ur? ?d?",
-    message: "?fir?n??? l?ti ??y??w?", placeholder: "Fi SMS, ?fir?n??? WhatsApp, t?b? ?k?l?? s?b??",
-    count: "?m?", example: "Gb?y?nj? ?p??r?", suspicious: "?fir?n??? ??b?n t? ? ?iy?m?j?",
-    normal: "?fir?n??? d??d??", clear: "Pa r??", analyze: "??y??w? ?fir?n??? y??",
-    loading: "? ??y??w??", privacy: "D??b? bo ?s?f?nni r?",
-    privacyText: "M? ?e fi ??r?? a??n?, PIN, OTP, t?b? gbogbo ?l?y? b??k? r? s?b?.",
-    result: "?b?j?de ???y??w?", scam: "? ?e? ?e k? ? j?? j?b?t?",
-    safe: "A k? r? ?m? j?b?t? t? ?e kedere", uncertain: "???ra",
-    detected: "?d? ?fir?n???", category: "Ir? j?b?t? t? ?e? ?e",
-    confidence: "?gb??k??l? ?w??e", explanation: "K? l? fa ?b?j?de y???",
-    advice: "K? ni k? o ?e?",
-    adviceScam: "M? t? ?j?p??, m? fi ow? r?n???, m? s? p?n ?w?n k??d?. J??r?? s? ?ni t? r?n??? n?? n?pas?? ??n? ?b?nis??r?? ?fin.",
-    adviceSafe: "?b?j?de y?? k? t?m?? s? p? ?fir?n??? n?? d?j? p? ? l??l?wu. ??y??w? ?w?n ?b??r? ??r?t??l?? l??t??.",
-    adviceUncertain: "M? ?e t??l? ?t??ni ?fir?n??? n?? l??w??l??w??. J??r?? s? i n?pas?? ??n? ?fin.",
-    errorEmpty: "T? ?fir?n??? kan s?b? l?ti ??y??w?.", errorLong: "?fir?n??? k? gb??d?? ju ?m? 2,000 l?.",
-    errorConnect: "A k? l? d? i??? ???y??w?. ??y??w? API k? o s? t?n gb?y?nj?.",
-    footer: "Ohun ?l? ??b? t? AI ? ??r?nw?? f?n. ?b?j?de j?? ?t??nis??n?, k? ? ?e ?d?nil?j?.",
-    ready: "? ti ?et?n", mlNote: "? ??y??w? ?w?n ?p??r? ??r?? t? n? ? ?e p??l? spam.",
-    aiNote: "? lo ???y??w? ?tum?? ?d? p?p??. API agb?gb? ni a n?l? n?gb? ?d?gb?s?k?.",
-    confidenceNote: "?gb??k??l? j?? ???r? ?w??e, k? ? ?e ?d?nil?j? p? ? p?ye.",
+    name: "Yoruba", tagline: "AABO ONI-NUMBA FUN GBOGBO ENIYAN",
+    title: "Dúró. Ṣàyẹ̀wò. Dáàbò bo ara rẹ.",
+    subtitle: "Ṣàyẹ̀wò àwọn ìfiranṣẹ́ ifura kí o tó tẹ ọna asopọ, fi owó ránṣẹ́, tàbí pín àlàyé ara ẹni.",
+    language: "Èdè ojú-ewé", mode: "Ọ̀nà àyẹ̀wò",
+    ml: "Ẹ̀kọ́ ẹ̀rọ (ML)", ai: "AI fún ọ̀pọ̀ èdè",
+    message: "Ìfiranṣẹ́ láti ṣàyẹ̀wò", placeholder: "Fi SMS, ìfiranṣẹ́ WhatsApp, tàbí ìkìlọ̀ síbí",
+    count: "àwọn lẹ́tà", example: "Gbìyànjú àpẹẹrẹ", suspicious: "Ìfiranṣẹ́ ẹ̀bùn ifura",
+    normal: "Ìfiranṣẹ́ déédé", clear: "Pa rẹ́", analyze: "Ṣàyẹ̀wò ìfiranṣẹ́ yìí",
+    loading: "A ń ṣàyẹ̀wò ìfiranṣẹ́", privacy: "Dáàbò bo ìkọ̀kọ̀ rẹ",
+    privacyText: "Má ṣe fi ọ̀rọ̀ aṣínà, PIN, OTP, tàbí gbogbo àlàyé banki rẹ síbí.",
+    result: "Àbájáde àyẹ̀wò", scam: "Ó ṣeé ṣe kí ó jẹ́ jìbìtì", safe: "A kò rí àmì jìbìtì tó ṣe kedere",
+    uncertain: "Ṣọ́ra", detected: "Èdè ìfiranṣẹ́ tí a rí",
+    category: "Irú jìbìtì tó ṣeé ṣe", confidence: "Ìgbẹ́kẹ̀lé àwòṣe",
+    explanation: "Ìdí fún àbájáde yìí", advice: "Kí ni o yẹ kí o ṣe",
+    adviceScam: "Má tẹ àwọn ọna asopọ, má fi owó ránṣẹ́, má sì pín àwọn kóòdù. Jẹ́rìí ẹni tó fi ìfiranṣẹ́ ránṣẹ́ nípasẹ̀ ọ̀nà ìbánisọ̀rọ̀ òṣìṣẹ́.",
+    adviceSafe: "Àbájáde yìí kò ṣe ìdánilójú pé ìfiranṣẹ́ náà ní ààbò. Jẹ́rìí àwọn ìbéèrè àìròtẹ́lẹ̀ lọ́tọ̀.",
+    adviceUncertain: "Má ṣe tẹ̀lé ìfiranṣẹ́ náà síbẹ̀. Jẹ́rìí ẹni tó fi ránṣẹ́ àti ohun tó béèrè nípasẹ̀ ọ̀nà òṣìṣẹ́.",
+    errorEmpty: "Fi ìfiranṣẹ́ kan síbí láti ṣàyẹ̀wò.", errorLong: "Ìfiranṣẹ́ kò gbọdọ̀ ju lẹ́tà 2,000 lọ.",
+    errorConnect: "A kò lè sopọ̀ mọ́ iṣẹ́ àyẹ̀wò. Ṣàyẹ̀wò API tí o yàn kí o sì tún gbìyànjú.",
+    footer: "Ohun èlò ààbò tí AI ń ṣèrànwọ́ fún. Àbájáde jẹ́ ìtọ́nisọ́nà, kì í ṣe ìdánilójú.",
+    ready: "Ó ti ṣetán", mlNote: "Ó ń ṣàyẹ̀wò àwọn àpẹẹrẹ ọ̀rọ̀ tó ní í ṣe pẹ̀lú spam.",
+    aiNote: "Ó ń lo àyẹ̀wò ìtumọ̀ ọ̀pọ̀ èdè. API agbègbè ni a nílò nígbà ìdàgbàsókè.",
+    confidenceNote: "Ìgbẹ́kẹ̀lé jẹ́ ìṣírò àwòṣe, kì í ṣe ìdánilójú pé ó péye."
   },
   ig: {
-    name: "Igbo", tagline: "Nchekwa dijital? maka onye ? b?la",
-    title: "Kw?s?. Lelee. N?r? n? nchebe.",
-    subtitle: "Nyochaa ozi na-enyo enyo tupu ?t?kwas? ya obi.",
-    language: "As?s? ihu weeb?", mode: "?z? nyocha",
-    ml: "Usoro mm?ta igwe (ML)", ai: "AI na-as? ?t?t? as?s?",
-    message: "Ozi a ga-enyocha", placeholder: "Tinye SMS, ozi WhatsApp, ma ? b? ?kwa ebe a?",
-    count: "mkp?r?edemede", example: "Nwaa ihe at?", suspicious: "Ozi onyinye na-enyo enyo",
-    normal: "Ozi nk?t?", clear: "Hichap?", analyze: "Nyochaa ozi a",
-    loading: "A na-enyocha ozi?", privacy: "Chebe ozi nkeonwe g?",
-    privacyText: "Etinyela okwuntughe, PIN, OTP, ma ? b? nk?wa ?l? ak? g? zuru ezu.",
-    result: "Nsonaaz? nyocha", scam: "O nwere ike ?b? wayo",
-    safe: "Ach?p?tagh? akara wayo doro anya", uncertain: "Kpachara anya",
-    detected: "As?s? ozi", category: "?d? wayo nwere ike ?d?",
-    confidence: "Nt?kwas? obi ?d?", explanation: "G?n? kpatara nsonaaz? a?",
-    advice: "G?n? ka ? ga-eme?",
-    adviceScam: "Ap?ala njik?, ezipula ego, ekesakwala koodu. Jiri ?z? g??ment? kwenye onye zitere ozi ah?.",
-    adviceSafe: "Nsonaaz? a anagh? ekwe nkwa na ozi ah? d? nchebe. Nyochaa ar?r?? ah? nke ?ma.",
-    adviceUncertain: "Emela ihe ozi ah? gwara g? ugbu a. Kwenye ya site n??z? g??ment?.",
-    errorEmpty: "Tinye ozi ? ch?r? inyocha.", errorLong: "Ozi ah? agagh? akar? mkp?r?edemede 2,000.",
-    errorConnect: "Enwegh? ike iru ?r? nyocha. Lelee API wee nwalee ?z?.",
-    footer: "Ngwa nchekwa AI na-enyere aka. Nsonaaz? b? nd?m?d?, ? b?gh? nkwa.",
-    ready: "D? njikere", mlNote: "Na-enyocha usoro okwu met?tara spam.",
-    aiNote: "Na-eji nyocha ngh?ta as?s?. API mpaghara d? mkpa n'oge mmepe.",
-    confidenceNote: "Nt?kwas? obi b? at?mat? ?d?, ? b?gh? nkwa izi ezi.",
+    name: "Igbo", tagline: "Nchekwa dijitalụ maka onye ọ bụla",
+    title: "Kwụsị. Lelee. Nọ na nchebe.",
+    subtitle: "Nyochaa ozi na-enyo enyo tupu ị pịa njikọ, zipu ego, ma ọ bụ kesaa ozi nkeonwe.",
+    language: "Asụsụ ihu weebụ", mode: "Ụzọ nyocha",
+    ml: "Mmụta igwe (ML)", ai: "AI na-asụ ọtụtụ asụsụ",
+    message: "Ozi a ga-enyocha", placeholder: "Tinye SMS, ozi WhatsApp, ma ọ bụ ọkwa ebe a",
+    count: "mkpụrụedemede", example: "Nwaa ihe atụ", suspicious: "Ozi onyinye na-enyo enyo",
+    normal: "Ozi nkịtị", clear: "Hichapụ", analyze: "Nyochaa ozi a",
+    loading: "A na-enyocha ozi", privacy: "Chebe ozi nkeonwe gị",
+    privacyText: "Etinyela okwuntughe, PIN, OTP, ma ọ bụ nkọwa ụlọ akụ gị zuru ezu.",
+    result: "Nsonaazụ nyocha", scam: "O nwere ike ịbụ wayo", safe: "Achọpụtaghị akara wayo doro anya",
+    uncertain: "Kpachara anya", detected: "Asụsụ ozi",
+    category: "Ụdị wayo nwere ike ịdị", confidence: "Ntụkwasị obi ụdị AI",
+    explanation: "Gịnị kpatara nsonaazụ a", advice: "Gịnị ka ị ga-eme",
+    adviceScam: "Pịala njikọ, ezipula ego, ekesakwala koodu. Jiri ụzọ gọọmentị ma ọ bụ nke ụlọ ọrụ kwenye onye zitere ozi ahụ.",
+    adviceSafe: "Nsonaazụ a anaghị ekwe nkwa na ozi ahụ dị nchebe. Nyochaa arịrịọ ndị a na-atụghị anya ha n'onwe gị.",
+    adviceUncertain: "Emela ihe ozi ahụ gwara gị ugbu a. Kwenye ya site n'ụzọ gọọmentị ma ọ bụ nke ụlọ ọrụ.",
+    errorEmpty: "Tinye ozi ịchọrọ inyocha.", errorLong: "Ozi ahụ agaghị akarị mkpụrụedemede 2,000.",
+    errorConnect: "Enweghị ike iru ọrụ nyocha. Lelee API ma nwalee ọzọ.",
+    footer: "Ngwa nchekwa AI na-enyere aka. Nsonaazụ bụ ndụmọdụ, ọ bụghị nkwa.",
+    ready: "Dị njikere", mlNote: "Na-enyocha usoro okwu metụtara spam.",
+    aiNote: "Na-eji nyocha nghọta asụsụ dị iche iche. API mpaghara dị mkpa n'oge mmepe.",
+    confidenceNote: "Ntụkwasị obi bụ atụmatụ ụdị AI, ọ bụghị nkwa izi ezi."
   },
   ha: {
     name: "Hausa", tagline: "TSARON DIJITAL GA KOWA",
     title: "Dakatar. Duba. Kasance cikin aminci.",
-    subtitle: "Duba sa?onnin da ake zargi kafin ka danna maha?i, aika ku?i, ko raba bayanan sirri.",
+    subtitle: "Duba saƙonnin da ake zargi kafin ka danna mahaɗi, aika kuɗi, ko raba bayanan sirri.",
     language: "Harshen shafin", mode: "Hanyar bincike",
     ml: "Koyon inji (ML)", ai: "AI mai harsuna da yawa",
-    message: "Sa?on da za a bincika", placeholder: "Manna SMS, sa?on WhatsApp, ko sanarwa a nan?",
-    count: "haruffa", example: "Gwada misali", suspicious: "Sa?on kyauta mai zargi",
-    normal: "Sa?o na yau da kullum", clear: "Goge", analyze: "Bincika wannan sa?on",
-    loading: "Ana bincika sa?o?", privacy: "Kare bayananka",
+    message: "Saƙon da za a bincika", placeholder: "Manna SMS, saƙon WhatsApp, ko sanarwa a nan",
+    count: "haruffa", example: "Gwada misali", suspicious: "Saƙon kyauta mai zargi",
+    normal: "Saƙo na yau da kullum", clear: "Goge", analyze: "Bincika wannan saƙon",
+    loading: "Ana bincika saƙo", privacy: "Kare bayananka",
     privacyText: "Kada ka manna kalmar sirri, PIN, OTP, ko cikakkun bayanan banki.",
-    result: "Sakamakon bincike", scam: "Mai yiwuwa zamba",
-    safe: "Ba a gano alamun zamba bayyanannu ba", uncertain: "Yi hattara",
-    detected: "Harshen sa?on", category: "Nau'in zamba mai yiwuwa",
-    confidence: "Amincewar samfurin", explanation: "Me ya sa aka samu wannan sakamakon?",
-    advice: "Me ya kamata ka yi?",
-    adviceScam: "Kada ka danna maha?i, aika ku?i, ko raba lambobin sirri. Tabbatar da mai aikawa ta hanyar hukuma.",
-    adviceSafe: "Wannan sakamakon ba ya tabbatar da cewa sa?on yana da aminci. Tabbatar da bu?atun da ba ka zata ba.",
-    adviceUncertain: "Kada ka bi umarnin sa?on tukuna. Tabbatar da shi ta hanyar hukuma.",
-    errorEmpty: "Shigar da sa?on da za a bincika.", errorLong: "Sa?on kada ya wuce haruffa 2,000.",
-    errorConnect: "Ba a iya ha?uwa da sabis ?in bincike ba. Duba API ka sake gwadawa.",
+    result: "Sakamakon bincike", scam: "Mai yiwuwa zamba", safe: "Ba a gano alamun zamba bayyanannu ba",
+    uncertain: "Yi hattara", detected: "Harshen saƙon",
+    category: "Nau'in zamba mai yiwuwa", confidence: "Amincewar samfurin",
+    explanation: "Me ya sa aka samu wannan sakamakon", advice: "Me ya kamata ka yi",
+    adviceScam: "Kada ka danna mahaɗi, aika kuɗi, ko raba lambobin sirri. Tabbatar da mai aikawa ta hanyar hukuma.",
+    adviceSafe: "Wannan sakamakon ba ya tabbatar da cewa saƙon yana da aminci. Tabbatar da buƙatun da ba ka zata ba.",
+    adviceUncertain: "Kada ka bi umarnin saƙon tukuna. Tabbatar da shi ta hanyar hukuma.",
+    errorEmpty: "Shigar da saƙon da za a bincika.", errorLong: "Saƙon kada ya wuce haruffa 2,000.",
+    errorConnect: "Ba a iya haɗuwa da sabis ɗin bincike ba. Duba API ka sake gwadawa.",
     footer: "Kayan taimakon tsaro na AI. Sakamako jagora ne, ba tabbaci ba.",
     ready: "A shirye yake", mlNote: "Yana bincika tsarin kalmomin spam.",
-    aiNote: "Yana amfani da binciken ma'ana na harsuna da yawa. Ana bu?atar API na gida yayin ha?akawa.",
-    confidenceNote: "Amincewa ?iyasin samfurin ne, ba tabbacin daidaito ba.",
-  },
-}
+    aiNote: "Yana amfani da binciken ma'ana na harsuna da yawa. Ana buƙatar API na gida yayin haɓakawa.",
+    confidenceNote: "Amincewa ƙiyasin samfurin ne, ba tabbacin daidaito ba."
+  }
+};
+
 
 const examples = {
   suspicious: 'Congratulations! You have won a free prize. Click this link now to claim your reward.',
@@ -285,7 +283,7 @@ function App() {
                   setError('')
                 }}
               >
-                <span className="mode-symbol">âœ³</span>
+                <span className="mode-symbol">&#x2733;</span>
                 <span>
                   <strong>{t.ai}</strong>
                   <small>{t.aiNote}</small>
@@ -386,7 +384,7 @@ function App() {
             disabled={loading}
           >
             {loading ? t.loading : t.analyze}
-            <span aria-hidden="true">â†’</span>
+            <span aria-hidden="true">&#x2192;</span>
           </button>
 
           <p className="keyboard-hint">Tip: Ctrl + Enter to check</p>
@@ -417,11 +415,11 @@ function App() {
                 <>
                   <div className="result-detail">
                     <span>{t.detected}</span>
-                    <strong>{result.user_language || 'â€”'}</strong>
+                    <strong>{result.user_language || '—'}</strong>
                   </div>
                   <div className="result-detail">
                     <span>{t.category}</span>
-                    <strong>{result.scam_type || 'â€”'}</strong>
+                    <strong>{result.scam_type || '—'}</strong>
                   </div>
                 </>
               )}
@@ -452,7 +450,7 @@ function App() {
         )}
 
         <section className="trust-section">
-          <div className="trust-icon" aria-hidden="true">âœ“</div>
+          <div className="trust-icon" aria-hidden="true">&#x2713;</div>
           <div>
             <h2>Think before you trust</h2>
             <p>
