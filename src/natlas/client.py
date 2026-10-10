@@ -66,7 +66,10 @@ def _get_space_result(message: str) -> dict:
     response = requests.post(
         submit_url,
         headers=headers,
-        json={"data": [message, "English"]},
+        json={
+    "message": message,
+    "selected_language": "English",
+},
         timeout=30,
     )
     response.raise_for_status()
