@@ -1,4 +1,6 @@
+﻿import logging
 
+logger = logging.getLogger(__name__)
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -24,6 +26,7 @@ app.add_middleware(
     "http://localhost:5173",
     "http://127.0.0.1:5173",
     "https://phishing-message-classifier-1.onrender.com",
+    "https://scamshield-ng-web.onrender.com",
 ],
     
     allow_credentials=False,
@@ -73,11 +76,11 @@ def predict(request: MessageRequest):
             status_code=400,
             detail=str(error),
         )
-
     except Exception:
+        logger.exception("N-ATLaS analysis failed")
         raise HTTPException(
             status_code=500,
-            detail="An internal prediction error occurred.",
+            detail="An internal N-ATLaS analysis error occurred.",
         )
 
 
@@ -105,3 +108,4 @@ def analyze(request: MessageRequest):
             status_code=500,
             detail="An internal N-ATLaS analysis error occurred.",
         )
+
