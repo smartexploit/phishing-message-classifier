@@ -80,7 +80,7 @@ The automated tests mock HTTP responses. They verify client behavior and do not,
 
 - API: https://scamshield-ng-api.onrender.com/
 - Web application: https://scamshield-ng-web.onrender.com/
-- Source repository: https://github.com/smartexploit/phishing-message-classifier
+- Source repository: https://github.com/smartexploit/scamshield-ng
 
 ## Limitations
 
