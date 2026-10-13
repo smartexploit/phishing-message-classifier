@@ -1,7 +1,7 @@
 ﻿# ScamShield NG Developer Toolkit — Beta Test Report
 
 **Project:** ScamShield NG  
-**Repository:** https://github.com/smartexploit/phishing-message-classifier  
+**Repository:** https://github.com/smartexploit/scamshield-ng 
 **Toolkit location:** `developer-toolkit/`  
 **Branch:** `feature/scamshield-react-frontend`  
 **Beta testers:** 2 developers  
