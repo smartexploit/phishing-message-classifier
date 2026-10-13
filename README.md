@@ -433,45 +433,44 @@ This makes it possible to distinguish between:
 # 11. Project Structure
 
 ```text
-phishing-message-classifier/
-â”‚
-â”œâ”€â”€ app/
-â”‚   â””â”€â”€ main.py
-â”‚
-â”œâ”€â”€ data/
-â”‚   â”œâ”€â”€ raw/
-â”‚   â”œâ”€â”€ processed/
-â”‚   â””â”€â”€ evaluation/
-â”‚       â”œâ”€â”€ README.md
-â”‚       â”œâ”€â”€ SCAMSHIELD_ARCHITECTURE.md
-â”‚       â”œâ”€â”€ SCAMSHIELD_CONTROLLED_EVALUATION.md
-â”‚       â”œâ”€â”€ scamshield_schema.json
-â”‚       â”œâ”€â”€ baseline_controlled_results.csv
-â”‚       â”œâ”€â”€ scamshield_controlled_results.csv
-â”‚       â”œâ”€â”€ exais_normalized.csv
-â”‚       â”œâ”€â”€ exais_baseline_results.json
-â”‚       â”œâ”€â”€ parse_exais.py
-â”‚       â”œâ”€â”€ run_exais_baseline.py
-â”‚       â””â”€â”€ analyze_exais_errors.py
-â”‚
-â”œâ”€â”€ frontend/
-â”‚
-â”œâ”€â”€ models/
-â”‚   â””â”€â”€ final_phishing_classifier.joblib
-â”‚
-â”œâ”€â”€ notebooks/
-â”‚
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ predict.py
-â”‚   â””â”€â”€ natlas/
-â”‚       â””â”€â”€ client.py
-â”‚
-â”œâ”€â”€ tests/
-â”‚
-â”œâ”€â”€ baseline_check.py
-â”œâ”€â”€ requirements.txt
-â”œâ”€â”€ .gitignore
-â””â”€â”€ README.md
+scamshield-ng/
+|-- app/
+|   `-- main.py
+|
+|-- data/
+|   |-- raw/
+|   |-- processed/
+|   `-- evaluation/
+|       |-- README.md
+|       |-- SCAMSHIELD_ARCHITECTURE.md
+|       |-- SCAMSHIELD_CONTROLLED_EVALUATION.md
+|       |-- scamshield_schema.json
+|       |-- baseline_controlled_results.csv
+|       |-- scamshield_controlled_results.csv
+|       |-- exais_normalized.csv
+|       |-- exais_baseline_results.json
+|       |-- parse_exais.py
+|       |-- run_exais_baseline.py
+|       `-- analyze_exais_errors.py
+|
+|-- frontend/
+|
+|-- models/
+|   `-- final_phishing_classifier.joblib
+|
+|-- notebooks/
+|
+|-- src/
+|   |-- predict.py
+|   `-- natlas/
+|       `-- client.py
+|
+|-- tests/
+|
+|-- baseline_check.py
+|-- requirements.txt
+|-- .gitignore
+`-- README.md
 ```
 
 ---
@@ -677,7 +676,7 @@ Security decisions should consider additional evidence and, where appropriate, h
 
 **Ogunlade Faith Kayode**
 
-AI â€¢ Cybersecurity â€¢ Machine Learning â€¢ Digital Solutions
+AI - Cybersecurity - Machine Learning - Digital Solutions
 
 GitHub: `smartexploit`
 
